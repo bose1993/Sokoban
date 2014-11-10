@@ -26,19 +26,37 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- *
+ *  Classe gestione errori input
  * @author e.bosetti
  */
 public class SuperMarioException extends Exception {
-    public SuperMarioException() throws LineUnavailableException, IOException, UnsupportedAudioFileException{
+    /**
+     * Costruttore senza messaggi di errore ne audio
+     */
+    public SuperMarioException(){
         super();
         
     }
+    
+    /**
+     * Costruttore con messaggio di errore e audio
+     * @param s messaggio si errore
+     * @throws LineUnavailableException
+     * @throws IOException
+     * @throws UnsupportedAudioFileException 
+     */
     public SuperMarioException(String s) throws LineUnavailableException, IOException, UnsupportedAudioFileException{
         super(s);
         System.err.println(s);
         this.doSound();
     }
+    
+    /**
+     * Metodo che scarica e riproduce il suono
+     * @throws LineUnavailableException
+     * @throws IOException
+     * @throws UnsupportedAudioFileException 
+     */
     private void doSound() throws LineUnavailableException, IOException, UnsupportedAudioFileException{
         AudioInputStream audio = AudioSystem.getAudioInputStream(new URL("http://themushroomkingdom.net/sounds/wav/smb/smb_mariodie.wav"));
         Clip clip = AudioSystem.getClip();
