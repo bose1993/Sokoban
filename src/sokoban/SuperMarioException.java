@@ -26,7 +26,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- *  Classe gestione errori input
+ * Classe gestione errori input
  * @author e.bosetti
  */
 public class SuperMarioException extends Exception {
