@@ -32,7 +32,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class SuperMarioException extends Exception {
     public SuperMarioException() throws LineUnavailableException, IOException, UnsupportedAudioFileException{
         super();
-        this.doSound();
+        
     }
     public SuperMarioException(String s) throws LineUnavailableException, IOException, UnsupportedAudioFileException{
         super(s);
