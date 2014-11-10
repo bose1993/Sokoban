@@ -1,4 +1,11 @@
 package sokoban;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 /**
  * This file is part of Sokoban By Bose.
  *
@@ -116,7 +123,7 @@ public class SokobanGame {
      */
     public boolean move(int m){
         if(m>4 || m<0)
-            return false;
+            //return false;
         if(this.canMove(this.riga, this.colonna, m)){
            int nextMarioCoordinate[] = this.nextCoordinate(this.riga,this.colonna, m);
            if(this.hitBox(nextMarioCoordinate[0], nextMarioCoordinate[1])){
@@ -145,7 +152,7 @@ public class SokobanGame {
      * @param m Tipologia di mossa
      * @return array nella posizione 0 le Y nella poszione 1 le X
      */
-    public int[] nextCoordinate(int r,int c, int m){
+    public int[] nextCoordinate(int r,int c, int m) {
         int newCord [] = new int[2];
          switch(m){
             case 1:
@@ -164,6 +171,18 @@ public class SokobanGame {
                 newCord[1]=c-1;
                 newCord[0]=r;
                 break;
+            default:
+        try {
+            try {
+                throw new SuperMarioException("Parametri inseriti errati");
+            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+                Logger.getLogger(SokobanGame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SuperMarioException ex) {
+                newCord[1]=c;
+                newCord[0]=r;
+                return newCord;
+        }
         }
         return newCord;
     }
