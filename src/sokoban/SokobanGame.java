@@ -78,7 +78,17 @@ public class SokobanGame {
                 if(c-1<0)
                     return false;
                 break;
-        }
+            default:
+                try {
+                    try {
+                        throw new SuperMarioException("Parametri inseriti errati");
+                    } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+                        Logger.getLogger(SokobanGame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            } catch (SuperMarioException ex) {
+                    return false;
+            }
+            }
         
         return true;
     }
@@ -172,17 +182,17 @@ public class SokobanGame {
                 newCord[0]=r;
                 break;
             default:
-        try {
-            try {
-                throw new SuperMarioException("Parametri inseriti errati");
-            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
-                Logger.getLogger(SokobanGame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (SuperMarioException ex) {
-                newCord[1]=c;
-                newCord[0]=r;
-                return newCord;
-        }
+                try {
+                    try {
+                        throw new SuperMarioException("Parametri inseriti errati");
+                    } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+                        Logger.getLogger(SokobanGame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (SuperMarioException ex) {
+                        newCord[1]=c;
+                        newCord[0]=r;
+                        return newCord;
+                }
         }
         return newCord;
     }
