@@ -35,9 +35,9 @@ public class Sokoban {
            Scanner input = new Scanner(System.in);
            String m = input.nextLine();
            try{
-            s.move(Integer.parseInt(m));
+            System.out.println(s.move(Integer.parseInt(m)));
            }catch(NumberFormatException e){
-                   
+                 System.err.println("Non un numero");
             }
            s.print();
        }

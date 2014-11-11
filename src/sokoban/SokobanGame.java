@@ -1,8 +1,6 @@
 package sokoban;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -130,8 +128,6 @@ public class SokobanGame {
      * @return 
      */
     public boolean move(int m){
-        if(m>4 || m<0)
-            //return false;
         if(this.canMove(this.riga, this.colonna, m)){
            int nextMarioCoordinate[] = this.nextCoordinate(this.riga,this.colonna, m);
            if(this.hitBox(nextMarioCoordinate[0], nextMarioCoordinate[1])){
